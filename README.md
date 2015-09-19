@@ -49,6 +49,9 @@ modpython:
 cyrusauth:
 * This module needs cyrus-sasl2
 
+pamaccess:
+* This module needs libpam
+
 Character Encodings:
 * To get proper character encoding and charsets install ICU (`libicu4-dev`)
 

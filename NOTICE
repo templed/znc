@@ -53,5 +53,6 @@ Heiko Hund <heiko@ist.eigentlich.net> - cyrusauth module
 Philippe (http://sourceforge.net/users/cycomate) - kickrejoin module
 J-P Nurmi <jpnurmi@gmail.com>
 Thomas Ward <teward@dark-net.net>
+Douglas Temple <douglas@dtemple.info> - pamaccess module
 
 If you did something useful and want to be listed here too, add yourself and submit the patch.

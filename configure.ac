@@ -113,6 +113,9 @@ AC_ARG_ENABLE( [swig],
 AC_ARG_ENABLE( [cyrus],
 	AS_HELP_STRING([--enable-cyrus], [enable cyrus]),
 	[if test "$enableval" = "yes" ; then CYRUS=1; fi],)
+AC_ARG_ENABLE( [pam],
+	AS_HELP_STRING([--enable-pam], [enable pam]),
+	[if test "$enableval" = "yes" ; then PAM=1; fi],)
 AC_ARG_ENABLE( [optimization],
 	AS_HELP_STRING([--disable-optimization], [Disable some compiler optimizations to
 			decrease memory usage while compiling]),
@@ -599,6 +602,12 @@ if test -n "$CYRUS"; then
 		AC_MSG_ERROR([could not find libsasl2. Try --disable-cyrus.]))
 fi
 
+if test -n "$PAM"; then
+	AC_CHECK_LIB( pam, pam_start,
+		[: Dont let autoconf add -lpam, Makefile handles that],
+		AC_MSG_ERROR([could not find libpam. Try --disable-pam.]))
+fi
+
 # Check if we want modtcl
 AC_ARG_ENABLE( [tcl],
 	AS_HELP_STRING([--enable-tcl], [enable modtcl]),
@@ -725,6 +734,11 @@ if test x"$CYRUS" = "x" ; then
 	echo "cyrus:        no"
 else
 	echo "cyrus:        yes"
+fi
+if test x"$PAM" = "x" ; then
+	echo "pam:          no"
+else
+	echo "pam:          yes"
 fi
 if test x"$TCL_FLAGS" = "x" ; then
 	echo "tcl:          no"

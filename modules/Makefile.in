@@ -88,6 +88,11 @@ FILES    := $(shell echo $(FILES) | sed -e "s:cyrusauth::")
 endif
 cyrusauthLDFLAGS := -lsasl2
 
+ifeq "@PAM@" ""
+FILES    := $(shell echo $(FILES) | sed -e "s:pamaccess::")
+endif
+pamaccessLDFLAGS := -lpam
+
 TARGETS  := $(addsuffix .so, $(FILES))
 
 CLEAN    += *.so *.o
